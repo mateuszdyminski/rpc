@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_package = "com.grpc.streams";
+
+package streams;
+
+// The service definition.
+service Pipeline {
+  rpc Send (Message) returns (Response) {}
+  rpc List (Request) returns (stream Message) {}
+}
+
+message Response {
+}
+
+message Request {
+	string origin = 1;
+}
+
+message Message {
+  string msg = 1;
+  bytes payload = 2;
+}
